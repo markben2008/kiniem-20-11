@@ -1,0 +1,195 @@
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tri ân những người lái đò thầm lặng</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fff3cd, #ffd966);
+      color: #5a3e00;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 50px 20px 20px;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      font-weight: bold;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      font-weight: 500;
+      color: #7b5b00;
+      margin-top: -10px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .flower {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: url('https://cdn-icons-png.flaticon.com/512/765/765613.png') no-repeat center/contain;
+      animation: float 10s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 1em;
+      color: #6b4b00;
+      background: rgba(255, 240, 180, 0.4);
+    }
+
+    /* khung chatbot */
+    #chatbot-box {
+      display: flex;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      height: 400px;
+      background: #fffdf5;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      overflow: hidden;
+      flex-direction: column;
+      animation: appear 1s ease;
+    }
+
+    @keyframes appear {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    #chat-header {
+      background: #ffcc00;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    #chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    #chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    #chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+
+    #chat-input button {
+      background: #ffcc00;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tri ân những người lái đò thầm lặng</h1>
+    <h2>Chúc mừng Ngày Nhà giáo Việt Nam 20/11 🌸</h2>
+  </header>
+
+  <footer>
+    <p>“Cảm ơn những người thầy, người cô đã lặng lẽ gieo mầm tri thức cho bao thế hệ học trò.”</p>
+  </footer>
+
+  <!-- Hiệu ứng hoa rơi -->
+  <script>
+    for (let i = 0; i < 10; i++) {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = 8 + Math.random() * 5 + 's';
+      flower.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(flower);
+    }
+  </script>
+
+  <!-- Khung Chatbot -->
+  <div id="chatbot-box">
+    <div id="chat-header">Chatbot Tri Ân 🎤</div>
+    <div id="chat-messages"></div>
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="Nhập lời bạn muốn nói...">
+      <button onclick="sendMessage()">Gửi</button>
+    </div>
+  </div>
+
+  <script>
+    const chatMessages = document.getElementById('chat-messages');
+
+    // Hàm thêm tin nhắn
+    function addMessage(sender, text) {
+      const msg = document.createElement('p');
+      msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Hàm phản hồi
+    function sendMessage() {
+      const input = document.getElementById('user-input');
+      const userText = input.value.trim();
+      if (userText === '') return;
+      addMessage("Bạn", userText);
+      input.value = '';
+
+      let reply = "Tôi chưa hiểu ý bạn, nhưng tôi rất vui được nói chuyện hôm nay 💛";
+
+      if (userText.includes("chúc")) reply = "Chúc các thầy cô luôn mạnh khỏe, hạnh phúc và tràn đầy nhiệt huyết ạ! 🌼";
+      else if (userText.includes("thơ")) reply = "“Nghề giáo là nghề cao quý,  tựa ánh nắng giữa trời mưa.  Thầy cô – người lái đò thầm lặng,  đưa bao thế hệ đến bến mơ.” ✨";
+      if (userText.includes("đố")) reply = "Đố bạn nè: 'Không ai nhìn thấy mặt tôi, nhưng ai cũng biết tôi đến khi trống trường vang lên' – Là gì nào? 😄";
+      else if(userText.includes("cái gì ")) reply="Đó là cái trống trường. Bạn còn muốn chơi câu đố tiếp không ?";
+      else if(userText.includes("trống trường")) reply="Chúc mừng bạn đã trả lời chính xác. Bạn còn muốn chơi câu đố tiếp không ?";
+      if(userText.includes("có")) reply="Hè kêu ve vẻ vè ve - Màu áo đỏ son . Đố bạn là cây gì?"
+      else if (userText.includes("chào bạn")) reply = "Bạn muốn tôi giúp gì không ? ✨";
+      else if(userText.includes("cây gì")) reply="Đó là cây phượng đỏ";
+      else if (userText.includes("ngày 20 tháng 11 ")) reply = "Ngày 20 tháng 11 là Ngày Nhà giáo Việt Nam 🇻🇳 — một ngày lễ lớn hằng năm để tôn vinh các thầy cô giáo và những người làm công tác giáo dục. ✨";
+      else if (userText.includes("lịch sử")) reply = "Năm 1946: Tổ chức Liên hiệp các Công đoàn Giáo dục (FISE) được thành lập tại Paris, Pháp.   Năm 1949: FISE công bố “Hiến chương các nhà giáo”, nêu rõ quyền lợi và trách nhiệm của giáo viên    Năm 1953: Công đoàn Giáo dục Việt Nam gia nhập FISE.Tháng 8/1957: Tại hội nghị FISE ở Warszawa (Ba Lan), các nước xã hội chủ nghĩa thống nhất lấy ngày 20 tháng 11 hằng năm làm Ngày Quốc tế Hiến chương các Nhà giáo.      Ngày 20/11/1958: Việt Nam tổ chức kỷ niệm lần đầu tiên.       Ngày 28/9/1982: Hội đồng Bộ trưởng (nay là Chính phủ) ra Quyết định số 167-HĐBT, chính thức công nhận ngày 20/11 là Ngày Nhà giáo Việt Nam.";
+      addMessage("Chatbot", reply);
+      speak(reply);
+    }
+
+    // Tự động bật và chào khi mở trang
+    window.onload = function() {
+      const greeting = "Xin chào! Tôi là Chatbot tri ân. Chúc mừng Ngày Nhà giáo Việt Nam 20 tháng 11!.Bạn có câu hỏi nào muốn dành cho chúng tôi không ?";
+      addMessage("Chatbot", greeting);
+      speak(greeting);
+    };
+  </script>
+
+</body>
+</html>
